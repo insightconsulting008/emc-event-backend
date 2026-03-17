@@ -1,0 +1,42 @@
+// prisma/schema.prisma
+datasource db {
+  provider  = "postgresql"
+  url  	    = env("DATABASE_URL")
+  // uncomment next line if you use Prisma <5.10
+  // directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  use       String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model Event {
+  eventId         String   @id @default(cuid())
+
+  title           String
+  slug            String   @unique   // ✅ IMPORTANT
+  description     String
+
+  venueName       String
+  venueAddress    String
+  eventDateTime   String
+
+  speakerName     String
+  speakerRole     String
+  speakerBio      String
+  speakerImage    String?
+
+  poweredByTitle  String
+  poweredByDesc   String
+
+  eventImage      String?
+  createdAt       DateTime @default(now())
+}
