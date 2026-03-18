@@ -84,7 +84,7 @@ router.post("/create/event",  async (req, res) => {
 /* =========================
    GET ALL EVENTS
 ========================= */
-router.get("/all/events", async (req, res) => {
+router.get("/all/event", async (req, res) => {
   try {
 
     const events = await prisma.event.findMany({
