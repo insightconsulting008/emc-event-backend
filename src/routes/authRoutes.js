@@ -86,7 +86,6 @@ router.post("/login", async (req, res) => {
       { expiresIn: "7d" }
     );
 
-  
     const isProd = process.env.NODE_ENV === "production";
 
     res.cookie("token", token, {
