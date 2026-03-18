@@ -21,6 +21,7 @@ jobs:
         run: |
           sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
           cd /opt/emc-event-backend
+          git config --global --add safe.directory /opt/emc-event-backend
           git pull origin main
           sudo systemctl stop dev
           sudo systemctl restart prod
